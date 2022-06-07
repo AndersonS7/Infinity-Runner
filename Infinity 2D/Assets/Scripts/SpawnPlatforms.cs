@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class SpawnPlatforms : MonoBehaviour
 {
-    public List<GameObject> platforms = new List<GameObject>();
+    public List<GameObject> platforms = new List<GameObject>(); //prefabs das plataformas
 
-    private List<Transform> currentPlatforms = new List<Transform>();
+    private List<Transform> currentPlatforms = new List<Transform>(); //plataformas instanciadas na cena 
 
     private Transform player;
     private Transform currentPlatformPoint;
     private int platformIndex;
 
-    private float offset;
+    private float offset; //deslocamento da plataforma na cena
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +21,7 @@ public class SpawnPlatforms : MonoBehaviour
 
         for (int i = 0; i < platforms.Count; i++)
         {
-            Transform p = Instantiate(platforms[i], new Vector2(i * 30, 0), transform.rotation).transform;
+            Transform p = Instantiate(platforms[i], new Vector2(i * 30, -4), transform.rotation).transform;
             currentPlatforms.Add(p);
             offset += 30f;
         }
