@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
     public float speed;
     public float jumpForce;
+    public int health;
 
     private bool isJumping;
 
@@ -38,6 +39,16 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        }
+    }
+
+    public void OnHit(int dmg)
+    {
+        health -= dmg;
+
+        if (health <= 0)
+        {
+            GameController.instance.ShowGameOver();
         }
     }
 
