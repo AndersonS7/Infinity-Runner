@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
 
     public Animator anim;
     private Rigidbody2D rig;
+    public GameObject bulletPrefab;
+    public Transform firePoint;
  
     // Start is called before the first frame update
     void Start()
@@ -31,6 +33,11 @@ public class Player : MonoBehaviour
             rig.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
             anim.SetBool("jumping", true);
             isJumping = true;
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         }
     }
 
