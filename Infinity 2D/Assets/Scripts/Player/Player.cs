@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     public float speed;
     public float jumpForce;
-    public int health;
+    public float health;
+    public float totalHealth;
+    public Image healthImg;
 
     private bool isJumping;
 
@@ -29,6 +32,8 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        ControlHealthUI();
+
         if (Input.GetKeyDown(KeyCode.E))
         {
             OnShoot();
@@ -38,6 +43,7 @@ public class Player : MonoBehaviour
         {
             OnJump();
         }
+
     }
 
     public void OnShoot()
@@ -65,6 +71,10 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void ControlHealthUI()
+    {
+        healthImg.fillAmount = health / totalHealth;
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.layer == 6)

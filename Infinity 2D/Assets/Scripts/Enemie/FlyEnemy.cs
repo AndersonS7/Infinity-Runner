@@ -29,5 +29,11 @@ public class FlyEnemy : Enemy
         {
             player.OnHit(damage);
         }
+
+        if (collision.CompareTag("Bullet"))
+        {
+            collision.GetComponent<Projectile>().OnHit();
+            ApplyDamage(collision.GetComponent<Projectile>().damage);
+        }
     }
 }

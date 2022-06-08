@@ -37,5 +37,10 @@ public class Projectile : MonoBehaviour
         {
             OnHit();
         }
+
+        if (collision.CompareTag("Enemy"))
+        {
+            OnHit();
+        }
     }
 }

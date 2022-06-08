@@ -9,27 +9,21 @@ public class GameController : MonoBehaviour
     public Text scoreTxt;
     public GameObject gameOverPanel;
     public static GameController instance;
-    public float score;
+    public int currentScore;
     public float timeScore;
 
     // Start is called before the first frame update
     void Start()
     {
-        score = 0;
+        currentScore = 0;
         instance = this;
         Time.timeScale = 1;
     }
 
     void Update()
     {
-        timeScore += Time.deltaTime;
-
-        if (timeScore >= 2)
-        {
-            score++;
-            scoreTxt.text = score.ToString();
-            timeScore = 0;
-        }
+        ShowScoreUI();
+        ScoreControl();
     }
 
     public void ShowGameOver()
@@ -41,5 +35,26 @@ public class GameController : MonoBehaviour
     public void RestartGame()
     {
         SceneManager.LoadScene(1);
+    }
+
+    private void ShowScoreUI()
+    {
+        timeScore += Time.deltaTime;
+
+        if (timeScore >= 2)
+        {
+            currentScore++;
+            scoreTxt.text = currentScore.ToString();
+            timeScore = 0;
+        }
+    }
+
+    private void ScoreControl()
+    {
+        if (PlayerPrefs.GetInt("score") < currentScore)
+        {
+            PlayerPrefs.SetInt("score", currentScore);
+            PlayerPrefs.Save();
+        }
     }
 }
