@@ -6,11 +6,18 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    //UI 
     public Text scoreTxt;
+    public Text scoreGameOver;
+    public Text scoreRecordGameOver;
+
+    //------------------
     public GameObject gameOverPanel;
     public static GameController instance;
+
     public int currentScore;
     public float timeScore;
+    public bool paused;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +35,10 @@ public class GameController : MonoBehaviour
 
     public void ShowGameOver()
     {
+        scoreGameOver.text = currentScore.ToString();
+        scoreRecordGameOver.text = PlayerPrefs.GetInt("score").ToString();
+
+        paused = true;
         gameOverPanel.SetActive(true);
         Time.timeScale = 0; //controla a velocidade do jogo 
     }

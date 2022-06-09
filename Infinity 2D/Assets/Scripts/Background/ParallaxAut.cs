@@ -11,7 +11,10 @@ public class ParallaxAut : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move();
+        if (!GameController.instance.paused)
+        {
+            Move();
+        }
     }
 
     private void Move()
