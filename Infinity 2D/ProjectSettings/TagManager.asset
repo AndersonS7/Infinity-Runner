@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Bullet
   - Enemy
+  - PointFinish
+  - CamFinish
   layers:
   - Default
   - TransparentFX

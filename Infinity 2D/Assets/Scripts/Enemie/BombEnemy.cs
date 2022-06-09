@@ -22,4 +22,18 @@ public class BombEnemy : Enemy
             throwCount = 0f;
         }
     }
+
+    protected override void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("CamFinish"))
+        {
+            Destroy(gameObject);
+        }
+
+        if (collision.CompareTag("Bullet"))
+        {
+            collision.GetComponent<Projectile>().OnHit();
+            ApplyDamage(collision.GetComponent<Projectile>().damage);
+        }
+    }
 }

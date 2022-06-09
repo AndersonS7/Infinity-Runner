@@ -15,8 +15,8 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentScore = 0;
         instance = this;
+        currentScore = 0;
         Time.timeScale = 1;
     }
 
@@ -35,6 +35,11 @@ public class GameController : MonoBehaviour
     public void RestartGame()
     {
         SceneManager.LoadScene(1);
+    }
+
+    public void Menu()
+    {
+        SceneManager.LoadScene(0);
     }
 
     private void ShowScoreUI()

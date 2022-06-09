@@ -9,10 +9,11 @@ public class Player : MonoBehaviour
     public float jumpForce;
     public float health;
     public float totalHealth;
-    public Image healthImg;
 
     private bool isJumping;
 
+    //public GameObject soundShoot;
+    public Image healthImg;
     public Animator anim;
     private Rigidbody2D rig;
     public GameObject bulletPrefab;
@@ -43,7 +44,6 @@ public class Player : MonoBehaviour
         {
             OnJump();
         }
-
     }
 
     public void OnShoot()

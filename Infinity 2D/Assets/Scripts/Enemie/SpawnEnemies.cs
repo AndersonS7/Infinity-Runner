@@ -7,7 +7,8 @@ public class SpawnEnemies : MonoBehaviour
     public List<GameObject> enemiesList = new List<GameObject>();
 
     private float timeCount;
-    public float spawnTime;
+    public float spawnTimeMin;
+    public float spawnTimeMax;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +21,7 @@ public class SpawnEnemies : MonoBehaviour
     {
         timeCount += Time.deltaTime;
 
-        if (timeCount >= spawnTime)
+        if (timeCount >= Random.Range(spawnTimeMin, spawnTimeMax))
         {
             SpawnEnemy();
             timeCount = 0f;
