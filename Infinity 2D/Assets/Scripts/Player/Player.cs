@@ -6,10 +6,12 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public float speed;
+    public float dashJump;
     public float jumpForce;
     public float health;
     public float totalHealth;
 
+    private float saveSpeed;
     private bool isJumping;
 
     //public GameObject soundShoot;
@@ -22,6 +24,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        saveSpeed = speed;
         rig = GetComponent<Rigidbody2D>();
     }
 
@@ -57,6 +60,7 @@ public class Player : MonoBehaviour
         {
             rig.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
             anim.SetBool("jumping", true);
+            speed = dashJump; //da o dash no ar
             isJumping = true;
         }
     }
@@ -80,6 +84,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.layer == 6)
         {
             anim.SetBool("jumping", false);
+            speed = saveSpeed; // tira o dash
             isJumping = false;
         }
     }
